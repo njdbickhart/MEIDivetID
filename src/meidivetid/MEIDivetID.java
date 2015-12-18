@@ -39,7 +39,7 @@ public class MEIDivetID {
                 "input", "repeat", "outbase");
         
         BedMap<BedSimple> map = new BedMap<>();
-        try(BufferedReader input = Files.newBufferedReader(Paths.get(cmd.GetValue("input")), Charset.defaultCharset())){
+        try(BufferedReader input = Files.newBufferedReader(Paths.get(cmd.GetValue("repeat")), Charset.defaultCharset())){
             String line;
             while((line = input.readLine()) != null){
                 line = line.trim();
