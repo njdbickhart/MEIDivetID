@@ -64,13 +64,17 @@ public class MEIDivetID {
         BedMap<BedClosest.BedCompare> results = closeCheck.RetrieveClosestNameComp(map, oneEndRepAnchors);
         
         Path finalOut = Paths.get(cmd.GetValue("outbase") + ".putative.mei");
+        Path failedOut = Paths.get(cmd.GetValue("outbase") + ".failed.mei");
         try(BufferedWriter output = Files.newBufferedWriter(finalOut, Charset.defaultCharset())){
+            BufferedWriter failed = Files.newBufferedWriter(failedOut, Charset.defaultCharset());
             Set<String> chrs = results.getListChrs();
             for(String c : SortByChr.ascendingChr(chrs)){
                 for(BedClosest.BedCompare b : results.getSortedBedAbstractList(c)){
                     List<String> values = b.getOutStringList(true);
-                    if(Integer.parseInt(values.get(8)) < 1000)
+                    if(Integer.parseInt(values.get(8)) < 1000){
+                        failed.write(StrUtils.StrArray.Join((ArrayList<String>)values, "\t") + System.lineSeparator());
                         continue;
+                    }
                     output.write(StrUtils.StrArray.Join((ArrayList<String>)values, "\t") + System.lineSeparator());
                 }
             }
