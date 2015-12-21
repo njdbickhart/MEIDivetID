@@ -78,6 +78,7 @@ public class MEIDivetID {
                     output.write(StrUtils.StrArray.Join((ArrayList<String>)values, "\t") + System.lineSeparator());
                 }
             }
+            failed.close();
         }catch(IOException ex){
             ex.printStackTrace();
         }

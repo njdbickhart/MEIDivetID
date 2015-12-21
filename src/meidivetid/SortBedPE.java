@@ -45,9 +45,9 @@ public class SortBedPE {
                 if(!useful.use)
                     continue;
                 else{
-                    String anChr = (useful.firstRep)? segs[0] : segs[3];
-                    int anStart = (useful.firstRep)? Integer.parseInt(segs[1]) : Integer.parseInt(segs[4]);
-                    int anEnd = (useful.firstRep)? Integer.parseInt(segs[2]) : Integer.parseInt(segs[5]);
+                    String anChr = (useful.firstRep)? segs[3] : segs[0];
+                    int anStart = (useful.firstRep)? Integer.parseInt(segs[4]) : Integer.parseInt(segs[1]);
+                    int anEnd = (useful.firstRep)? Integer.parseInt(segs[5]) : Integer.parseInt(segs[2]);
                     
                     collector = IntersectIncrement(collector, anChr, anStart, anEnd, useful.repname);
                 }
