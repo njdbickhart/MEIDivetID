@@ -31,7 +31,7 @@ public class getSingleMappings {
                 line = line.trim();
                 String[] segs = line.split("\t");
                 
-                if(!segs[8].equals("transchr"))
+                if(!segs[9].equals("transchr"))
                     continue;
                 
                 if(lastread.equals("NA")){
@@ -63,7 +63,7 @@ public class getSingleMappings {
                 if(!unique.contains(segs[0]))
                     continue;
                 
-                boolean first = (SortByChr.GetChrOrder(segs[1], segs[5]) < 0)? false: true;
+                boolean first = (SortByChr.GetChrOrder(segs[1], segs[5]) < 0)? true: false;
                 String chr1 = (first)? segs[1] : segs[5];
                 int start1 = (first)? Integer.parseInt(segs[2]) : Integer.parseInt(segs[6]);
                 int end1 = (first)? Integer.parseInt(segs[3]) : Integer.parseInt(segs[7]);
@@ -78,6 +78,7 @@ public class getSingleMappings {
                 
                 out.write(str.toString());
             }
+            out.close();
         }catch(IOException ex){
             ex.printStackTrace();
         }
